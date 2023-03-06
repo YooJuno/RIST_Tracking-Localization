@@ -6,9 +6,6 @@ import time
 
 class Radius_Match:
 
-    __translation_xy = 0
-    __answer_translation = [0, 0]
-
     draw_circle = 0
     radiusMatching = 1
     nfeatures = 0
