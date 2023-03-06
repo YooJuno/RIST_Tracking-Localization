@@ -21,7 +21,7 @@ class RIST():
     __rm_max_match_length = 0
 
 
-    
+    # 초기화
     def __init__(self) -> None:
         
         self.__part = int(input("Part : "))
@@ -33,8 +33,14 @@ class RIST():
         self.cm = create_map.DB_MAP()  
         
         self.import_val() # yaml 파일로부터 변수를 불러오는 함수
-
-    def import_val(self): # yaml 파일로부터 변수를 불러오는 함수
+        self.import_img() # path에서 이미지 불러오는 함수
+    
+    # 찾고자 하는 q 순서 반환
+    def get_answer(self) -> int:
+        return self.__answer
+    
+    # yaml 파일로부터 변수를 불러오는 함수
+    def import_val(self) -> None: 
         with open('part' + str(self.__part) + '.yaml', 'r') as f:
             self.__data = yaml.safe_load(f)
 
@@ -65,10 +71,8 @@ class RIST():
         self.rm.radiusMatching = self.__data['radiusMatching']
         self.rm.nfeatures = self.__data['nfeatures']
 
-    def get_answer(self) -> int:
-        return self.__answer
-
-    def extract_img(self):
+    # 파일 경로로부터 이미지 불러와서 저장
+    def import_img(self) -> None:
         if(self.__undistortion == 1):
             """undistort"""
             for i in range(0, self.__num_images):
@@ -95,7 +99,8 @@ class RIST():
                                 [0.0              , 301.58768437338944 , 252.0695806789168],
                                 [0.0              , 0.0                , 1.0]])
 
-    def tracking(self, i, focal_, pp_):
+
+    def tracking(self, i, focal_, pp_) -> None:
 
         img1 = self.__query_imgs[i-1]
         img2 = self.__query_imgs[i]
@@ -114,7 +119,8 @@ class RIST():
     
         self.__translation_xy = self.track.get_translation()
 
-    def matching(self , i):
+
+    def matching(self , i) -> None:
 
         # #MATCHING ANSWER_QUERY WITH DB
         self.__db_search_index = self.cm.db_matching(self.__translation_xy , self.__answer_range)
@@ -169,8 +175,11 @@ class RIST():
         if(self.__scat_max_db == 1):
             self.cm.Scatter(self.__max_answer_translation[0], self.__max_answer_translation[1], 50, 'yellow')
         ####################################################################################################
-        
-    def get_num_images(self, q_path):
+    
+
+    
+    # 경로 안에 이미지가 몇 개 있는지 출력하는 함수
+    def get_num_images(self, q_path) -> int:
 
         valid_extensions = [".jpg", ".jpeg", ".png", ".gif", ".bmp"]  # 이미지 파일 확장자
 

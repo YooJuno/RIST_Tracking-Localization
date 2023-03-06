@@ -7,8 +7,6 @@ if __name__ == '__main__':
     # main 객체 생성
     rist = mainclass.RIST()
 
-    # 이미지 뽑아놓기
-    rist.extract_img()
 
     #MAKE DB MAP
     rist.cm.db_map()
