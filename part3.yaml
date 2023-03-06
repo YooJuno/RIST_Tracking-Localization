@@ -1,0 +1,23 @@
+radius : 200 
+
+rmvoutlier_th : 0.75
+
+angle_th : 95
+
+num_images : 92
+
+scale_x : 35
+scale_y : 35
+
+q_path : "/media/yoojunho/새 볼륨/0222/dataset/Part3_undistort/" 
+db_path : "/media/yoojunho/새 볼륨/0222/dataset/db_Part3/"
+
+undistortion : 1 # 1: use undistorted images
+
+scat_all_db : 0     # scatter all searched dbs
+scat_max_db : 0     # scatter the one with the highest number of matches among all searched dbs
+
+nfeatures : 1000
+
+draw_circle : 0 # default: 0
+radiusMatching : 1 # 0: sift matching   1: radius matching
