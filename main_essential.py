@@ -7,7 +7,6 @@ if __name__ == '__main__':
     # main 객체 생성
     rist = RIST.RIST()
 
-
     #MAKE DB MAP
     rist.cm.db_map()
 
