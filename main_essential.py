@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
 import time
-import mainclass 
+import RIST 
 
 if __name__ == '__main__':
 
     # main 객체 생성
-    rist = mainclass.RIST()
+    rist = RIST.RIST()
 
 
     #MAKE DB MAP
